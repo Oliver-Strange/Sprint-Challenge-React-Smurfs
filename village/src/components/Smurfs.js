@@ -1,32 +1,52 @@
-import React, { Component } from 'react';
+import React from "react";
+import styled from "styled-components";
 
-import Smurf from './Smurf';
-
-class Smurfs extends Component {
-  render() {
-    return (
-      <div className="Smurfs">
-        <h1>Smurf Village</h1>
-        <ul>
-          {this.props.smurfs.map(smurf => {
-            return (
-              <Smurf
-                name={smurf.name}
-                id={smurf.id}
-                age={smurf.age}
-                height={smurf.height}
-                key={smurf.id}
-              />
-            );
-          })}
-        </ul>
-      </div>
-    );
+function Smurfs(props) {
+  function routeToSmurf(event, smurf) {
+    event.preventDefault();
+    props.history.push(`/smurfs/${smurf.id}`);
   }
+  return (
+    <StyledSmurfsContainer>
+      <h1>Smurf Village</h1>
+        <StyledSmurf>
+          {props.smurfs.map(smurf => (
+            <div key={smurf.id} onClick={event => routeToSmurf(event, smurf)}>
+              <h1>name: {smurf.name}</h1>
+              <h2>age: {smurf.age}</h2>
+              <h2>height: {smurf.height}</h2>
+            </div>
+          ))}
+        </StyledSmurf>
+    </StyledSmurfsContainer>
+  );
 }
 
-Smurf.defaultProps = {
- smurfs: [],
-};
+const StyledSmurfsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+
+const StyledSmurf = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    border: 1px solid grey;
+    
+    &:hover {
+        cursor: pointer; 
+    }
+
+    h1 {
+        margin: 5px auto;
+    }
+
+    h2 {
+        margin 5px auto;
+    }
+`;
 
 export default Smurfs;
