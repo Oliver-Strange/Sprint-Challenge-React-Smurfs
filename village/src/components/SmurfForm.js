@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class SmurfForm extends Component {
   state = {
     smurfs: this.props.activeSmurf || {
-      name: '',
-      age: '',
-      height: ''
+      name: "",
+      age: "",
+      height: ""
     }
   };
-  
+
   submitSmurf = event => {
     event.preventDefault();
     if (this.props.activeSmurf) {
@@ -51,7 +51,9 @@ class SmurfForm extends Component {
             value={this.state.smurfs.height}
             name="height"
           />
-          <button type="submit">{this.props.activeSmurf ? "Update Smurf" : "Add to the village"}</button>
+          <button type="submit">
+            {this.props.activeSmurf ? "Update Smurf" : "Add to the village"}
+          </button>
         </form>
       </div>
     );

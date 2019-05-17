@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function Smurf(props) {
   const smurf = props.smurfs.find(
@@ -10,15 +10,13 @@ function Smurf(props) {
 
   const deleteHandler = event => {
     event.preventDefault();
-    props.deleteSmurf(props.match.params.id)
-  }
+    props.deleteSmurf(props.match.params.id);
+  };
 
   const populateSmurfForm = event => {
     event.preventDefault();
-    props.populateSmurfForm(smurf)
-  }
-
-
+    props.populateSmurfForm(smurf);
+  };
 
   return (
     <div className="Smurf">
@@ -29,8 +27,6 @@ function Smurf(props) {
       <button onClick={deleteHandler}>Delete Smurf</button>
     </div>
   );
-};
-
+}
 
 export default Smurf;
-

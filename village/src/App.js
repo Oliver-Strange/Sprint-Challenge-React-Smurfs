@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Route, NavLink } from "react-router-dom";
 import axios from "axios";
+
 import "./App.css";
+import styled from "styled-components";
+
 import SmurfForm from "./components/SmurfForm";
 import Smurfs from "./components/Smurfs";
 import Smurf from "./components/Smurf";
@@ -79,13 +82,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="navBar">
-          <NavLink exact to="/">
+      <StyledContainer>
+        <StyledNav>
+          <StyledNavLink exact to="/">
             Home
-          </NavLink>
-          <NavLink to="/smurfs">Smurfs</NavLink>
-          <NavLink to="/smurf-form">Add Smurf</NavLink>
-        </div>
+          </StyledNavLink>
+          <StyledNavLink to="/smurfs">Smurfs</StyledNavLink>
+          <StyledNavLink to="/smurf-form">Add Smurf</StyledNavLink>
+        </StyledNav>
         <Route exact path="/" component={Home} />
         <Route
           exact
@@ -114,9 +118,35 @@ class App extends Component {
             />
           )}
         />
+      </StyledContainer>
+        
       </div>
     );
   }
 }
+
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
+const StyledNav = styled.nav`
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+
+`;
+
+const StyledNavLink = styled(NavLink)`
+  margin: 20px;
+  text-decoration: none;
+  color: black;
+`;
 
 export default App;
