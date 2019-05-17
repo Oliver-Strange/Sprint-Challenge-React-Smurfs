@@ -4,7 +4,7 @@ import axios from "axios";
 import "./App.css";
 import SmurfForm from "./components/SmurfForm";
 import Smurfs from "./components/Smurfs";
-import Smurf from './components/Smurf';
+import Smurf from "./components/Smurf";
 import Home from "./components/Home";
 
 class App extends Component {
@@ -14,9 +14,9 @@ class App extends Component {
       activeSmurf: null,
       smurfs: [],
       smurf: {
-        name: '',
-        age: '',
-        height: ''
+        name: "",
+        age: "",
+        height: ""
       }
     };
   }
@@ -88,18 +88,31 @@ class App extends Component {
         </div>
         <Route exact path="/" component={Home} />
         <Route
+          exact
           path="/smurfs"
           render={props => <Smurfs {...props} smurfs={this.state.smurfs} />}
         />
-        <Route 
-          path='/smurfs/:id'
+        <Route
+          path="/smurfs/:id"
           render={props => (
-            <Smurf {...props} smurfs={this.state.smurfs} deleteSmurf={this.deleteSmurf} populateSmurfForm={this.populateSmurfForm} />
+            <Smurf
+              {...props}
+              smurfs={this.state.smurfs}
+              deleteSmurf={this.deleteSmurf}
+              populateSmurfForm={this.populateSmurfForm}
+            />
           )}
         />
         <Route
           path="/smurf-form"
-          render={props => <SmurfForm {...props} addSmurf={this.addSmurf} />}
+          render={props => (
+            <SmurfForm
+              {...props}
+              addSmurf={this.addSmurf}
+              activeSmurf={this.state.activeSmurf}
+              updateSmurfForm={this.updateSmurfForm}
+            />
+          )}
         />
       </div>
     );
